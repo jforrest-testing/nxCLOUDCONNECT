@@ -27,7 +27,7 @@ var basic = auth.basic({
 delivery_app.use(bodyParser.json());
 delivery_app.use(auth.connect(basic));
 
-delivery_router.route('/delivery/system_status').get(
+delivery_router.route('/system_status').get(
   function(req,res) {
     console.log("System status check");
     var body = 'true';
@@ -35,7 +35,7 @@ delivery_router.route('/delivery/system_status').get(
   }
 );
 
-delivery_router.route('/delivery/message').post(
+delivery_router.route('/message').post(
   function(req, res) {
     //console.log('\r\nMessage = ' + JSON.stringify(req.body));
 
@@ -93,7 +93,7 @@ map_router.route('/map').get(
     }
 );
 
-delivery_app.use('/nxCLOUDCONNECT/', delivery_router);
+delivery_app.use('/nxCLOUDCONNECT/delivery', delivery_router);
 delivery_app.listen(delivery_port);
 
 map_app.use('/', map_router);
